@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Quest</string>
+    <string name="task">Задание №3 (буква «Л»)  </string>
+    <string name="video">Задание №4 (буква «К»)</string>
+    <string name="quest">Задание №5. Повтори опыт, который был представлен в интерактивном видео</string>
+    <string name="anagramma">Задание №1 (буква «Д»)</string>
+    <string name="couple">Задание №2 (буква «А»)</string>
+    <string name="finish">Финиш</string>
+    <string name="start">Старт</string>
+
+</resources>

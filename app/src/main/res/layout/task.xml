@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/t3"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="480dp"
+        android:layout_height="131dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="30dp"
+        android:alpha="0.75"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:text="Реши задачу:
+Мертвое море – соленое озеро между Израилем, Иорданией и Западным берегом реки Иордан. Берега озера находятся более чем на 400 м ниже уровня моря, что делает это место самым низким участком суши на планете. Вода Мертвого моря содержит огромное количество солей, поэтому в нем очень легко плавать. Рассчитай выталкивающую силу, которая действует на человека весом 70 кг. "
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="408dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.75"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:onClick="clear"
+        android:inputType="textPersonName"
+        android:text="Введите ответ"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="405dp"
+        android:onClick="Test"
+        android:text="Проверить"
+        android:textSize="12sp" />
+</LinearLayout>

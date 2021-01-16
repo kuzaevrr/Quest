@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/t2"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="84dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_height="match_parent"
+        android:layout_width="150dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.85"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:text="Соберите формулу."
+            android:textColor="@android:color/background_dark" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button0"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="m*g"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="H"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="ПЛОТНОСТЬ ρ    "
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="g="
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="Например:"
+            android:layout_marginTop="10dp"
+            android:alpha="0.85"
+            android:background="#FFFFFF"
+            android:textColor="@android:color/background_dark" />
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="СИЛА АРХИМЕДА F="
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="9,8"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="кг/м3"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="СИЛА ТЯЖЕСТИ F="
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="140dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:text="Давление P= F/S Па"
+            android:alpha="0.85"
+            android:background="#FFFFFF"
+            android:textColor="@android:color/background_dark" />
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="m/v"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="Н/кг"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="Н"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:alpha="0.75"
+            android:background="@drawable/my_button_bg"
+            android:onClick="buttonClicked"
+            android:text="ρ*g*V"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</LinearLayout>

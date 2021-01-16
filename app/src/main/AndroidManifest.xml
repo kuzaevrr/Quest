@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sarma.quest">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Quest_experience"
+            android:label="@string/quest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Video"
+            android:label="@string/video" />
+        <activity
+            android:name=".Task"
+            android:label="@string/task" />
+        <activity
+            android:name=".Anagramma"
+            android:label="@string/anagramma" />
+        <activity
+            android:name=".Сouple"
+            android:label="@string/couple">
+
+        </activity>
+        <activity
+            android:name=".Finish"
+            android:label="@string/finish" />
+        <activity
+            android:name=".Start"
+            android:label="@string/start">
+
+
+        </activity>
+    </application>
+
+</manifest>

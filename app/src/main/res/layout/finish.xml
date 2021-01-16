@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/t6">
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="448dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:alpha="0.75"
+        android:background="#FFFFFF"
+        android:text="     Вот и подошло твое путешествие по океану и островам. Какие самые главные сокровища ты сегодня получил? Знания!"
+
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:onClick="clear"
+        android:inputType="textPersonName"
+        android:text="Введи кодовое слово" />
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Открыть сокровище" />
+</LinearLayout>

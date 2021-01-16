@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:background="@drawable/t4"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="362dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="411dp"
+            android:layout_height="270dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="163dp"
+            android:layout_marginTop="5dp"
+            android:alpha="0.75"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="     Многие смотрели серию романов «Гарри Потер» о приключении юного волшебника. Ваша задача проанализировать данный фрагмент фильма и определить, действительно ли Гарри мог изменить объем тела тети Мардж примерно в два раза, чтобы она взлетела. Для того, чтобы опровергнуть и согласиться с представленным необходимо определить отношение конечного объема тети Мардж к первоначальному."
+            android:textColor="@android:color/background_dark"
+            android:textSize="11sp" />
+
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:alpha="0.75"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:onClick="clear"
+            android:inputType="textPersonName"
+            android:text="Введите ответ"
+            android:textColor="@android:color/background_dark"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.85"
+            android:onClick="Test"
+            android:text="Проверить"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.85"
+            android:onClick="Help"
+            android:text="Подсказка"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>
