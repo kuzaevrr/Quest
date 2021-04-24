@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--            android:name=".Quest_experience"-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sarma.quest">
 
@@ -10,12 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Quest_experience"
+            android:name = ".Quest_experience"
             android:label="@string/quest">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Video"
@@ -37,8 +34,10 @@
         <activity
             android:name=".Start"
             android:label="@string/start">
-
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

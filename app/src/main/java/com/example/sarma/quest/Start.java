@@ -18,11 +18,12 @@ public class Start extends AppCompatActivity {
         Button = (Button) findViewById(R.id.button18);
         Text = (TextView) findViewById(R.id.textView18);
     }
+
     public void start(View v) {
         Button.setVisibility(View.GONE);
         Text.setVisibility(View.GONE);
         Intent intent = new Intent(this, Anagramma.class);
         startActivity(intent);
     }
-    }
+}
 

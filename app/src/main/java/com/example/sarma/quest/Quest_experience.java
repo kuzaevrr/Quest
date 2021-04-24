@@ -1,51 +1,71 @@
 package com.example.sarma.quest;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.AnimationDrawable;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import android.view.KeyEvent;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class Quest_experience extends AppCompatActivity implements View.OnTouchListener {
 
-    private android.widget.ImageView ImageView;
-    private ImageView mImageView;
-    private int[] ImageArray = {0, R.drawable.start, R.drawable.start21, R.drawable.start2, R.drawable.b25, R.drawable.aa, R.drawable.t5};
-    private int[] mImageArray = {0, R.drawable.gruz, R.drawable.lapka, R.drawable.stakan};
-    private int mX;
-    private int mY;
+    private ImageView barbell; //штанга
+    private ImageView cargo; //груз
+    private ImageView glassful; //стакан
+    private int[] barbellArray = {0, R.drawable.start_size, R.drawable.b22_size, R.drawable.b23_size, R.drawable.b24_size, R.drawable.b25_size,
+            R.drawable.aa_size, R.drawable.a21_size, R.drawable.a22_size, R.drawable.a23_size, R.drawable.a24_size, R.drawable.start2_size};
+    public static int mX;
+    public static int mY;
     public RelativeLayout.LayoutParams layoutParams;
-    private AnimationDrawable mAnimationDrawable;
     int q = 0;
-    int i = 0;
+    private DisplayMetrics displayMetrics;
+    private int onePercentWidth;
+    private int onePercentHeight;
 
+    int height;
+    int width;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.experience);
+        setContentView(R.layout.experience_new);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        mImageView = findViewById(R.id.imageView);
-        ImageView = findViewById(R.id.ImageView1);
-        layoutParams = new RelativeLayout.LayoutParams(105, 145);
-        layoutParams.leftMargin = 1050;
-        layoutParams.topMargin = 750;
-        mImageView.setLayoutParams(layoutParams);
-        mImageView.setOnTouchListener(this);
-        ImageView.setImageResource(ImageArray[1]);
-        mImageView.setImageResource(mImageArray[1]);
+        {
+            displayMetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            onePercentWidth = displayMetrics.widthPixels / 100;
+            onePercentHeight = displayMetrics.heightPixels / 100;
+        }
+        {
+            barbell = findViewById(R.id.barbell);
+            cargo = findViewById(R.id.cargo);
+            glassful = findViewById(R.id.glassful);
+        }
+        layoutParams = new RelativeLayout.LayoutParams(dpToPx(this, 35), dpToPx(this, 35));
+        layoutParams.leftMargin = dpToPx(this, 300);
+        layoutParams.topMargin = displayMetrics.heightPixels - dpToPx(this, 100);
+        cargo.setLayoutParams(layoutParams);
+        cargo.setOnTouchListener(this);
 
     }
 
@@ -53,82 +73,136 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
 
         final int X = (int) event.getRawX();
         final int Y = (int) event.getRawY();
-        if (Y >= 5) {
-            switch (event.getAction() & MotionEvent.ACTION_MASK) {
 
-                case MotionEvent.ACTION_DOWN:
-                    RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
-                    if (q != 1) mX = X - lParams.leftMargin;
-                    mY = Y - lParams.topMargin;
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
-                    if (q != 1) layoutParams.leftMargin = X - mX;
+        height = displayMetrics.heightPixels;
+        width = displayMetrics.widthPixels;
+
+        switch (event.getAction() & MotionEvent.ACTION_MASK) {
+            case MotionEvent.ACTION_DOWN:
+                RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+                mX = X - lParams.leftMargin;
+                mY = Y - lParams.topMargin;
+                System.out.println("ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+                if (height + 150 > Y && width > X) {
+                    layoutParams.leftMargin = X - mX;
                     layoutParams.topMargin = Y - mY;
-                    break;
-            }
-        }
-        if ((((layoutParams.leftMargin - 430) * (layoutParams.leftMargin - 430)) + ((layoutParams.topMargin - 470) * (layoutParams.topMargin - 470)) <= 50) && (q == 0)) {
-            q = 1;
-            ImageView.setImageResource(ImageArray[5]);
-            mImageView.setImageResource(mImageArray[0]);
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                public void run() {
-                    layoutParams = new RelativeLayout.LayoutParams(308, 680);
-                    ImageView.setImageResource(ImageArray[2]);
-                    mImageView.setImageResource(mImageArray[2]);
-                    layoutParams.leftMargin = 225;
-                    mImageView.setLayoutParams(layoutParams);
+                    System.out.println("ACTION_MOVE");
                 }
-            }, 100);
+                break;
         }
 
+//        RelativeLayout.LayoutParams marginLayoutParams = (RelativeLayout.LayoutParams) barbell.getLayoutParams();
+//        Log.i("marginXYL", marginLayoutParams.bottomMargin + "||" + marginLayoutParams.leftMargin + "||" + this.getResources().getDisplayMetrics().density);
 
-        if ((((layoutParams.topMargin - 20) * (layoutParams.topMargin - 20)) <= 50) && (q == 1)) {
-            ImageView.setImageResource(ImageArray[0]);
-            mImageView.setImageResource(mImageArray[0]);
-            ImageView.setBackgroundResource(R.drawable.animation1);
-            mAnimationDrawable = (AnimationDrawable) ImageView.getBackground();
-            mAnimationDrawable.start();
-            q = 2;
+        int marginXL = (int) (onePercentWidth * 7.6 + barbell.getWidth() * 0.75);
+        int marginYL = (int) (onePercentHeight * 100 - dpToPx(this, 150) + dpToPx(this, 60));
+        System.out.println("Истина 1: x(" + marginXL + ") y(" + marginYL + ")\nПолучаем 1: x(" + X + ") y(" + Y + ")");
 
-        }
+        if (marginXL <= X + 50 && marginXL >= X - 50 &&
+                marginYL <= Y + 70 && marginYL >= Y - 50 &&
+                (q == 0)) {
+            cargo.setImageResource(barbellArray[0]);
+            startCountdownTimer(3000, 11);
 
-        if ((q == 2) && (i == 0)) {
-            i = 1;
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                public void run() {
-                    mImageView.setBackgroundResource(0);
-                    layoutParams = new RelativeLayout.LayoutParams(147, 118);
-                    ImageView.setImageResource(ImageArray[3]);
-                    mImageView.setImageResource(mImageArray[3]);
-                    layoutParams.leftMargin = 583;
-                    layoutParams.topMargin = 792;
-                    mImageView.setLayoutParams(layoutParams);
-                }
-            }, 1000);
 
         }
 
+        int marginXLBarbell = (int) (onePercentWidth * 7.6 + barbell.getWidth() * 0.94);
+        int marginYLBarbell = (int) (onePercentHeight * 100 - dpToPx(this, 150) + dpToPx(this, 60));
+        System.out.println("Истина 2: x(" + marginXLBarbell + ") y(" + marginYLBarbell + ")\nПолучаем 2: x(" + X + ") y(" + Y + ")");
 
-        if ((((layoutParams.leftMargin - 430) * (layoutParams.leftMargin - 430)) + ((layoutParams.topMargin - 500) * (layoutParams.topMargin - 500)) <= 50) && (q == 2) && (i == 1)) {
-            q = 3;
-            ImageView.setImageResource(ImageArray[0]);
-            mImageView.setImageResource(mImageArray[0]);
-            ImageView.setBackgroundResource(R.drawable.animation2);
-            mAnimationDrawable = (AnimationDrawable) ImageView.getBackground();
-            mAnimationDrawable.start();
+        if (marginXLBarbell <= X + 20 && marginXLBarbell >= X - 20 &&
+                marginYLBarbell <= Y + 20 && marginYLBarbell >= Y - 20 &&
+                q == 1) {
+            glassful.setVisibility(View.INVISIBLE);
+            startCountdownTimer(2000, 5);
+        }
 
-        }
-        if (q == 3) {
-            Intent intent = new Intent(this, Finish.class);
-            startActivity(intent);
-        }
+
         view.setLayoutParams(layoutParams);
-
         return true;
+    }
+
+    public void viewThread(int time, int numb) {
+
+        if (time > 0 && time <= 500) {
+            barbell.setImageResource(barbellArray[numb]);
+        } else if (time > 501 && time <= 1000) {
+            barbell.setImageResource(barbellArray[numb - 1]);
+        } else if (time > 1001 && time <= 1500) {
+            barbell.setImageResource(barbellArray[numb - 2]);
+        } else if (time > 1501 && time <= 2000) {
+            barbell.setImageResource(barbellArray[numb - 3]);
+        } else if (time > 2001 && time <= 2500) {
+            barbell.setImageResource(barbellArray[numb - 4]);
+        } else if (time > 2501 && time <= 3000) {
+            barbell.setImageResource(barbellArray[numb - 5]);
+        }
+    }
+
+
+    private int pxToDp(Context context, int px) {
+        return (int) (px / context.getResources().getDisplayMetrics().density);
+    }
+
+    private int dpToPx(Context context, int dp) {
+        return (int) (dp * context.getResources().getDisplayMetrics().density);
+    }
+
+    private int percentWidth(int px) {
+        return px / (displayMetrics.widthPixels / 100);
+    }
+
+    private int percentHeight(int px) {
+        return px / (displayMetrics.heightPixels / 100);
+    }
+
+    private double pxToPercentWidth(double px) {
+        return px * (int) (displayMetrics.widthPixels / 100);
+    }
+
+    private double pxToPercentHeight(double px) {
+        return px * (int) (displayMetrics.heightPixels / 100);
+    }
+
+
+    public boolean Collision(ImageView net, ImageView ball) {
+        Rect BallRect = new Rect();
+        ball.getHitRect(BallRect);
+        Rect NetRect = new Rect();
+        net.getHitRect(NetRect);
+        return BallRect.intersect(NetRect);
+    }
+
+    public void startCountdownTimer(int time, final int numb) {
+        CountDownTimer count = new CountDownTimer(time, 500) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                viewThread((int) millisUntilFinished, numb);
+            }
+
+            @Override
+            public void onFinish() {
+                if (q == 0 && numb == 11) {
+                    q = 1;
+                    RelativeLayout.LayoutParams real = (RelativeLayout.LayoutParams) glassful.getLayoutParams();
+                    layoutParams.rightMargin = width - real.leftMargin + glassful.getWidth();
+                    layoutParams.bottomMargin = real.bottomMargin;
+                    glassful.setLayoutParams(layoutParams);
+
+                    glassful.setVisibility(View.VISIBLE);
+                } else if (q == 1 && numb == 5) {
+
+                    q = 2;
+                    Intent intent = new Intent(Quest_experience.this, Finish.class);
+                    startActivity(intent);
+                }
+            }
+        };
+        count.start();
     }
 }
 

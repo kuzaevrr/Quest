@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/t4"
-    android:layout_height="match_parent">
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="362dp"
@@ -11,21 +12,21 @@
 
         <VideoView
             android:id="@+id/videoView"
-            android:layout_width="411dp"
-            android:layout_height="270dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="163dp"
+            android:layout_height="165dp"
             android:layout_marginTop="5dp"
             android:alpha="0.75"
             android:background="#FFFFFF"
@@ -44,10 +45,11 @@
             android:alpha="0.75"
             android:background="#FFFFFF"
             android:ems="10"
-            android:onClick="clear"
+            android:hint="Введите ответ"
             android:inputType="textPersonName"
-            android:text="Введите ответ"
+            android:onClick="clear"
             android:textColor="@android:color/background_dark"
+            android:textColorHint="@android:color/background_dark"
             android:textSize="16sp" />
 
         <Button

@@ -11,10 +11,10 @@
     <TextView
         android:id="@+id/textView18"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="60dp"
         android:layout_weight="1"
         android:alpha="0.85"
@@ -23,10 +23,11 @@
 
     <Button
         android:id="@+id/button18"
-        android:layout_width="289dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:onClick="start"
         android:layout_gravity="center"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:onClick="start"
         android:text="Вперед!" />
 </LinearLayout>
