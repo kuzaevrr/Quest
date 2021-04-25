@@ -30,8 +30,8 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
     private ImageView barbell; //штанга
     private ImageView cargo; //груз
     private ImageView glassful; //стакан
-    private int[] barbellArray = {0, R.drawable.start_size, R.drawable.b22_size, R.drawable.b23_size, R.drawable.b24_size, R.drawable.b25_size,
-            R.drawable.aa_size, R.drawable.a21_size, R.drawable.a22_size, R.drawable.a23_size, R.drawable.a24_size, R.drawable.start2_size};
+    private int[] barbellArray = {0, R.drawable.start, R.drawable.b22, R.drawable.b23, R.drawable.b24, R.drawable.b25,
+            R.drawable.aa, R.drawable.a21, R.drawable.a22, R.drawable.a23, R.drawable.a24, R.drawable.start2};
     public static int mX;
     public static int mY;
     public RelativeLayout.LayoutParams layoutParams;
@@ -39,6 +39,8 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
     private DisplayMetrics displayMetrics;
     private int onePercentWidth;
     private int onePercentHeight;
+
+    double dI;
 
     int height;
     int width;
@@ -61,12 +63,14 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
             cargo = findViewById(R.id.cargo);
             glassful = findViewById(R.id.glassful);
         }
-        layoutParams = new RelativeLayout.LayoutParams(dpToPx(this, 35), dpToPx(this, 35));
-        layoutParams.leftMargin = dpToPx(this, 300);
-        layoutParams.topMargin = displayMetrics.heightPixels - dpToPx(this, 100);
+        layoutParams = new RelativeLayout.LayoutParams(onePercentWidth * 7, onePercentWidth * 7);
+        layoutParams.leftMargin = onePercentWidth * 45;
+        layoutParams.topMargin = displayMetrics.heightPixels - onePercentHeight * 35;
         cargo.setLayoutParams(layoutParams);
         cargo.setOnTouchListener(this);
-
+//        ratio(displayMetrics.widthPixels, displayMetrics.heightPixels);
+        dI = (double) displayMetrics.widthPixels / displayMetrics.heightPixels;
+        Log.i("LogPercent", Double.toString(dI));
     }
 
     public boolean onTouch(final View view, MotionEvent event) {
@@ -97,12 +101,15 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
 //        RelativeLayout.LayoutParams marginLayoutParams = (RelativeLayout.LayoutParams) barbell.getLayoutParams();
 //        Log.i("marginXYL", marginLayoutParams.bottomMargin + "||" + marginLayoutParams.leftMargin + "||" + this.getResources().getDisplayMetrics().density);
 
-        int marginXL = (int) (onePercentWidth * 7.6 + barbell.getWidth() * 0.75);
-        int marginYL = (int) (onePercentHeight * 100 - dpToPx(this, 150) + dpToPx(this, 60));
+//        int marginXL = (int) (onePercentWidth * 7.6 + barbell.getWidth() * 0.75);
+//        int marginYL = (int) (onePercentHeight * 100 - dpToPx(this, 150) + dpToPx(this, 60));
+        double pr1 = (int) (25 * resDI(dI));
+        int marginXL = (int) (onePercentWidth * pr1); //33
+        int marginYL = (int) (onePercentHeight * 100 / 2 + dpToPx(this, (int) (pr1 + 55))); //60
         System.out.println("Истина 1: x(" + marginXL + ") y(" + marginYL + ")\nПолучаем 1: x(" + X + ") y(" + Y + ")");
 
         if (marginXL <= X + 50 && marginXL >= X - 50 &&
-                marginYL <= Y + 70 && marginYL >= Y - 50 &&
+                marginYL <= Y + 70 && marginYL >= Y - 70 &&
                 (q == 0)) {
             cargo.setImageResource(barbellArray[0]);
             startCountdownTimer(3000, 11);
@@ -110,12 +117,15 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
 
         }
 
-        int marginXLBarbell = (int) (onePercentWidth * 7.6 + barbell.getWidth() * 0.94);
-        int marginYLBarbell = (int) (onePercentHeight * 100 - dpToPx(this, 150) + dpToPx(this, 60));
+//        int marginXLBarbell = (int) (onePercentWidth * 7.6 + barbell.getWidth() * 0.94);
+//        int marginYLBarbell = (int) (onePercentHeight * 100 - dpToPx(this, 150) + dpToPx(this, 60));
+        double pr2 = (int) (29 * resDI(dI));
+        int marginXLBarbell = (int) (onePercentWidth * pr2);//37
+        int marginYLBarbell = (int) (onePercentHeight * 100 / 2 + dpToPx(this, (int) (pr2 + 40)));//55
         System.out.println("Истина 2: x(" + marginXLBarbell + ") y(" + marginYLBarbell + ")\nПолучаем 2: x(" + X + ") y(" + Y + ")");
 
         if (marginXLBarbell <= X + 20 && marginXLBarbell >= X - 20 &&
-                marginYLBarbell <= Y + 20 && marginYLBarbell >= Y - 20 &&
+                marginYLBarbell <= Y + 50 && marginYLBarbell >= Y - 50 &&
                 q == 1) {
             glassful.setVisibility(View.INVISIBLE);
             startCountdownTimer(2000, 5);
@@ -168,6 +178,23 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
         return px * (int) (displayMetrics.heightPixels / 100);
     }
 
+    private int gcd(int p, int q) {
+        if (q == 0) return p;
+        else return gcd(q, p % q);
+    }
+
+    private void ratio(int a, int b) {
+        final int gcd = gcd(a, b);
+        if (a > b) {
+            showAnswer(a / gcd, b / gcd);
+        } else {
+            showAnswer(b / gcd, a / gcd);
+        }
+    }
+
+    private void showAnswer(int a, int b) {
+        System.out.println(a + " " + b);
+    }
 
     public boolean Collision(ImageView net, ImageView ball) {
         Rect BallRect = new Rect();
@@ -199,10 +226,26 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
                     q = 2;
                     Intent intent = new Intent(Quest_experience.this, Finish.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         };
         count.start();
+    }
+
+    public double resDI(double dI) {
+        if (dI <= 2.2 && dI > 2.0) {
+            return 1.4;
+        } else if (dI <= 2.0 && dI > 1.8) {
+            return 1.3;
+        } else if (dI <= 1.8 && dI > 1.6) {
+            return 1.2;
+        } else if (dI <= 1.6 && dI > 1.4) {
+            return 1.14;
+        } else if (dI <= 1.4 && dI > 1.2) {
+            return 1.0;
+        }
+        return 0;
     }
 }
 

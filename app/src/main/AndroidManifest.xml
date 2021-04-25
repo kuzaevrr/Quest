@@ -13,6 +13,10 @@
         <activity
             android:name = ".Quest_experience"
             android:label="@string/quest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Video"
@@ -34,10 +38,7 @@
         <activity
             android:name=".Start"
             android:label="@string/start">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 
