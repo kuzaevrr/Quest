@@ -5,10 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import android.util.DisplayMetrics;
@@ -18,12 +16,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
-import com.squareup.picasso.Picasso;
-
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class Quest_experience extends AppCompatActivity implements View.OnTouchListener {
 
@@ -41,6 +33,8 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
     private int onePercentHeight;
 
     double dI;
+    boolean keyOne = true;
+    boolean keyTwo = true;
 
     int height;
     int width;
@@ -112,9 +106,10 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
                 marginYL <= Y + 70 && marginYL >= Y - 70 &&
                 (q == 0)) {
             cargo.setImageResource(barbellArray[0]);
-            startCountdownTimer(3000, 11);
-
-
+            if (keyOne) {
+                startCountdownTimer(3000, 11);
+            }
+            keyOne = false;
         }
 
 //        int marginXLBarbell = (int) (onePercentWidth * 7.6 + barbell.getWidth() * 0.94);
@@ -128,7 +123,10 @@ public class Quest_experience extends AppCompatActivity implements View.OnTouchL
                 marginYLBarbell <= Y + 50 && marginYLBarbell >= Y - 50 &&
                 q == 1) {
             glassful.setVisibility(View.INVISIBLE);
-            startCountdownTimer(2000, 5);
+            if (keyTwo) {
+                startCountdownTimer(2000, 5);
+            }
+            keyTwo = false;
         }
 
 
